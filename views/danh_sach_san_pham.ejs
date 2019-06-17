@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>danh-sach-san-pham</title>
+    <%include partial/head.ejs%>
+
+
+</head>
+
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<%include partial/menu.ejs%>
+<!-- Start Welcome area -->
+<div class="all-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="logo-pro">
+                    <a href="/"><img class="main-logo" src="/img/logo/logo.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-advance-area">
+        <%include partial/header.ejs%>
+        <!-- Mobile Menu start -->
+        <%include partial/mobile.ejs%>
+        <!-- Mobile Menu end -->
+        <div class="breadcome-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list single-page-breadcome">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcome-heading">
+                                        <form role="search" class="">
+                                            <input type="text" placeholder="Search..." class="form-control">
+                                            <a href=""><i class="fa fa-search"></i></a>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <ul class="breadcome-menu">
+                                        <li><a href="#">Trang chủ</a> <span class="bread-slash">/</span>
+                                        </li>
+                                        <li><span class="bread-blod">Danh sách sản phẩm</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------BODY----------->
+    <div class="product-status mg-tb-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-status-wrap">
+                            <h4>Danh sách sản phẩm</h4>
+                            <div class="add-product">
+                                <a href="danh_sach_san_pham/them_san_pham">Thêm sản phẩm</a>
+                            </div>
+                            <form method="POST" action="danh_sach_san_pham/search">
+                                <div class="row justify-content-center">
+                                    <div class="col col-md-3">
+                                        <label>Loại sản phẩm</label>
+                                        <select class="srchTxt" name="selectedType">
+                                            <option value="Tất cả">Tất cả</option>
+                                            <% for(var i = 0; i < list_types.length; i++) { %>
+                                                <option><%= list_types[i] %> </option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label>Nhà sản xuất</label>
+                                        <select class="srchTxt" name="selectedBrand">
+                                            <option value="Tất cả">Tất cả</option>
+                                            <% for(var i = 0; i < list_brands.length; i++) { %>
+                                                <option><%= list_brands[i] %> </option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+                                    <div class="col col-md-3">
+                                        <label>Phân loại</label>
+                                        <select class="srchTxt" name="selectedGender">
+                                            <option>Tất cả</option>
+                                            <option>nam</option>
+                                            <option>nữ</option>
+                                        </select>
+                                    </div>
+
+                                    <input type="submit" value="Lọc">
+                                </div>
+
+
+                            </form>
+                            <table>
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Giảm giá(%)</th>
+                                    <th>Loại</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+
+                                <%
+                                var maxIndex = (numPage + 1) * 12;
+
+                                if(maxIndex > list_items.length)
+                                    maxIndex = list_items.length;
+                                for(var i = numPage*12; i < maxIndex; i++) {%>
+                                <tr>
+                                    <td><img src="<%= list_items[i].img %>" alt="" /></td>
+                                    <td><%= list_items[i].name %></td>
+                                    <td><%= list_items[i].price %></td>
+                                    <td><%= list_items[i].number %></td>
+                                    <td><%= list_items[i].sale %></td>
+                                    <td><%= list_items[i].type %></td>
+                                    <td><a href="<%= list_items[i].url %>">Thay đổi thông tin</a></td>
+                                    <td><a href= <%= list_items[i].delete_url%>>Xóa</a></td>
+                                </tr>
+                                <% }; %>
+
+                            </table>
+                            <div class="custom-pagination">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <%
+                                        var numOfPage = list_items.length/12;
+                                        for(let i = 0; i < numOfPage; i++){
+                                        %>
+                                        <li><a href="/danh_sach_san_pham/Page?id=<%=i%>"><%=i + 1%></a></li>
+                                        <!--                                <li><a href="#">3</a></li>-->
+                                        <!--                                <li><a href="#">4</a></li>-->
+                                        <!--                                <li><a href="#">5</a></li>-->
+                                        <%}%>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <%include partial/footer.ejs%>
+</div>
+
+<!-- jquery
+    ============================================ -->
+<%include partial/script.ejs%>
+</body>
+
+</html>

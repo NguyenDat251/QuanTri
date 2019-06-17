@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <title>thong-ke-doanh-so</title>
+    <%include partial/head.ejs%>
+</head>
+
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<%include partial/menu.ejs%>
+<!-- Start Welcome area -->
+<div class="all-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="logo-pro">
+                    <a href="/"><img class="main-logo" src="/img/logo/logo.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-advance-area">
+        <%include partial/header.ejs%>
+        <!-- Mobile Menu start -->
+        <%include partial/mobile.ejs%>
+        <!-- Mobile Menu end -->
+        <div class="breadcome-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcome-list single-page-breadcome">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="breadcome-heading">
+                                        <form role="search" class="">
+                                            <input type="text" placeholder="Search..." class="form-control">
+                                            <a href=""><i class="fa fa-search"></i></a>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <ul class="breadcome-menu">
+                                        <li><a href="#">Trang chủ</a> <span class="bread-slash">/</span>
+                                        </li>
+                                        <li><span class="bread-blod">Thống kê doanh số</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------------BODY----------->
+    <div class="product-sales-area mg-tb-30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="product-sales-chart">
+                        <div class="portlet-title">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="caption pro-sl-hd">
+                                        <span class="caption-subject text-uppercase"><b>Doanh thu</b></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="actions graph-rp">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-grey active">
+                                                <input type="radio" name="options" class="toggle" id="option1" checked="">Hôm nay</label>
+                                            <label class="btn btn-grey">
+                                                <input type="radio" name="options" class="toggle" id="option2">Tuần này</label>
+                                            <label class="btn btn-grey">
+                                                <input type="radio" name="options" class="toggle" id="option3">Năm nay</label>
+                                            <label class="btn btn-grey">
+                                                <input type="radio" name="options" class="toggle" id="option4">Qúy này</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sparklinehome" class="sparkline-container">Loading..</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%include partial/footer.ejs%>
+</div>
+
+<!-- jquery
+    ============================================ -->
+<%include partial/script.ejs%>
+</body>
+
+</html>
